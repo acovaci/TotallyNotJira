@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Create New Project";
+}
+<h2>@ViewBag.Title</h2>
+<form method="post" action="/Project/New">
+    <label>Name</label>
+    <br />
+    <input type="text" name="Name" required />
+    <br /><br />
+    <label>Description</label>
+    <br/>
+    <textarea name="Description"></textarea>
+    <br /><br />
+    <button type="submit">Add Project</button>
+</form>
