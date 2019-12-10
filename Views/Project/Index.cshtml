@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Account Overview";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@foreach (var project in ViewBag.Projects)
+{
+    <h3><a href="/Project/Show/@project.ProjectId">@project.Name</a></h3>
+    <p>@project.Description</p>
+    <br />
+    <hr />
+    <br />
+}
+
+<a href="/Project/New" class="btn">New Project</a>
+<br />
