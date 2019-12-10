@@ -19,7 +19,7 @@ namespace TotallyNotJira.Controllers
         }
 
         // GET: Project/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Edit(int id)
         {
             ViewBag.Project = db.Projects.Find(id);
 
