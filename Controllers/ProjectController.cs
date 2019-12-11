@@ -18,14 +18,6 @@ namespace TotallyNotJira.Controllers
             return View();
         }
 
-        // GET: Project/Details/5
-        public ActionResult Edit(int id)
-        {
-            ViewBag.Project = db.Projects.Find(id);
-
-            return View();
-        }
-
         // GET: Project/Create
         public ActionResult New()
         {
@@ -63,16 +55,23 @@ namespace TotallyNotJira.Controllers
         {
             try
             {
-                Project project = db.Projects.Find(id);
-
-                if (TryUpdateModel(project))
+                if (ModelState.IsValid)
                 {
-                    project.Name = updatedProject.Name;
-                    project.Description = updatedProject.Description;
-                    db.SaveChanges();
-                }
+                    Project project = db.Projects.Find(id);
 
-                return RedirectToAction("Index");
+                    if (TryUpdateModel(project))
+                    {
+                        project.Name = updatedProject.Name;
+                        project.Description = updatedProject.Description;
+                        db.SaveChanges();
+                    }
+
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View(updatedProject);
+                }
             }
             catch
             {

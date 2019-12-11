@@ -11,8 +11,9 @@ namespace TotallyNotJira.Models
     {
         [Key]
         public int ProjectId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "You must give a name to your project")]
         public string Name { get; set; }
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
     }
 

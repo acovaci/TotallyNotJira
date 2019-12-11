@@ -1,15 +1,24 @@
-﻿@{
+﻿@model TotallyNotJira.Models.Project
+
+@{
     ViewBag.Title = "Create New Project";
 }
+
 <h2>@ViewBag.Title</h2>
-<form method="post" action="/Project/New">
-    <label>Name</label>
+
+@using (Html.BeginForm(actionName: "New", controllerName: "Project"))
+{
+    @Html.HiddenFor(x => x.ProjectId)
+
+    @Html.LabelFor(x => x.Name, "What would you call this project?")
     <br />
-    <input type="text" name="Name" required />
+    @Html.EditorFor(x => x.Name)
+    @Html.ValidationMessageFor(x => x.Name, null, new { @class = "text-danger" })
     <br /><br />
-    <label>Description</label>
+
+    @Html.LabelFor(x => x.Description, "What is this project about?")
     <br/>
-    <textarea name="Description"></textarea>
+    @Html.EditorFor(x => x.Description)
     <br /><br />
     <button type="submit">Add Project</button>
-</form>
+}
